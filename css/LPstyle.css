@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+
+* {
+  z-index: 3;
+}
+
+body {
+    background-color: rgb(10, 0, 40);
+    margin: 0px;
+    text-overflow: ellipsis;
+}
+
+.navbar {
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(to bottom, rgb(0,0,0,.95), rgba(100,0,40));
+    display: flex;
+    justify-content: center;
+}
+
+.navitems {
+    text-decoration: none;
+    margin: 1rem;
+    margin-top: 2rem;
+    color: gray;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-family: 'Tilt Neon', cursive;
+    height: fit-content;
+    transition: .8s ease-in-out;
+}
+
+.navitems:hover {
+  color: white;
+  transform: scale(1.02);
+  transition: .2s ease-in;
+  text-shadow: 8px 0px 120px 1px #ff4a3d;
+  text-shadow: 0 0 10px #ff4a3d,
+      0 0 20px #ff4a3d,
+      0 0 40px #ff4a3d,
+      0 0 80px #ff4a3d,
+      0 0 100px #030303;
+}
+
+.login-box {
+    font-family: 'Rubik', sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: rgba(5,5,5,.3);
+    backdrop-filter: blur(12vmax);  
+    box-sizing: border-box;
+    box-shadow: 0px 1px 70px rgba(100,00,00,.3);
+    border-radius: 10px;
+  }
+  
+  .login-box h2 {
+    margin: 0 0 30px;
+    padding: 0;
+    color: gray;
+    text-align: center;
+  }
+
+  .login-box .userbox {
+    position: relative;
+  }
+  
+  .login-box .userbox input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid rgb(255, 116, 61,.3);
+    outline: none;
+    background: transparent;
+  }
+
+  .login-box .userbox input:focus {
+    border-bottom-color: rgb(150, 150, 150,.5);
+  }
+
+    .login-box .userbox label {
+      position: absolute;
+      top:0;
+      left: 0;
+      padding: 10px 0;
+      font-size: 14px;
+      color: rgba(100,100,100,.7);
+      pointer-events: none;
+      transition: .5s ease-in-out;
+    }
+  
+  .login-box .userbox input:focus ~ label,
+  .login-box .userbox input:valid ~ label {
+    top: -16px;
+    left: 0;
+    text-shadow: #fff;
+    font-size: 12px;
+  }
+
+#blob {
+  background-color: white;
+  height: 12vmax;
+  aspect-ratio: 1;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: linear-gradient(to right, #370000,#860b0d);
+  animation: rotate 20s infinite;
+  opacity: 0.8;
+  z-index: 0;
+}
+
+@keyframes rotate {
+  from {
+    rotate: 0deg;
+  }
+  
+  50% {
+    scale: 1 1.5;
+  }
+  
+  to {
+    rotate: 360deg;
+  }
+}
+
+#blur {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+  backdrop-filter: blur(19vmax);
+}
+
+#subbtn {
+  color: #551A8B;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  background:transparent;
+  border: none;
+}
+
+#subbtn2 {
+  color: #551A8B;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  padding-left: 10px;
+}

@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicMate - Your Ultimate Music Experience</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Neonderthaw&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(to bottom, rgb(0,0,0,.95), rgba(100,0,40));
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 74, 61, 0.1);
+            z-index: 1000;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+        
+        .navbar-brand i {
+            color: #ff4a3d;
+            font-size: 1.5rem;
+        }
+        
+        .navbar-brand span {
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: #fff;
+            background: rgba(255, 74, 61, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .nav-link.active {
+            color: #ff4a3d;
+            background: rgba(255, 74, 61, 0.1);
+        }
+        
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .btn-login {
+            background: linear-gradient(45deg, #ff4a3d, #860b0d);
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 74, 61, 0.3);
+            color: white;
+        }
+        
+        /* Mobile Menu Toggle */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar-nav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+            
+            .navbar-nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .navbar-actions {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(20px);
+                padding: 1rem 2rem;
+                justify-content: center;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+            
+            .navbar-actions.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        
+        /* Background Effects */
+        #blur {
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            z-index: -2;
+            backdrop-filter: blur(12vmax);
+        }
+        
+        #blob {
+            background: linear-gradient(135deg, rgba(255, 74, 61, 0.1), rgba(134, 11, 13, 0.1));
+            height: 40vmax;
+            width: 40vmax;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            translate: -50% -50%;
+            border-radius: 50%;
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding-top: 120px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .hero-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff4a3d, #ffffff, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(255, 74, 61, 0.5);
+            }
+            to {
+                text-shadow: 0 0 30px rgba(255, 74, 61, 0.8);
+            }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #ff4a3d, #860b0d);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 74, 61, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 74, 61, 0.5);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #ff4a3d;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            color: #ff4a3d;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: #ff4a3d;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 74, 61, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 74, 61, 0.2);
+            border-color: rgba(255, 74, 61, 0.5);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: #ff4a3d;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .feature-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 3rem 2rem 1rem;
+            text-align: center;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 74, 61, 0.2);
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .social-link {
+            color: #ff4a3d;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            color: white;
+            transform: translateY(-3px);
+            text-shadow: 0 0 10px #ff4a3d;
+        }
+        
+        .footer-text {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 1rem;
+        }
+        
+        /* Statistics Section */
+        .stats-section {
+            padding: 5rem 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            margin: 3rem 0;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 74, 61, 0.1);
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ff4a3d;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px rgba(255, 74, 61, 0.3);
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+        }
+        
+        /* Popular Tracks Section */
+        .popular-section {
+            padding: 4rem 2rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 3rem;
+            text-shadow: 0 0 20px rgba(255, 74, 61, 0.3);
+        }
+        
+        .tracks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .track-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 74, 61, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .track-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 74, 61, 0.2);
+            border-color: rgba(255, 74, 61, 0.4);
+        }
+        
+        .track-image {
+            position: relative;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(45deg, #ff4a3d, #860b0d);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        
+        .track-image i {
+            font-size: 3rem;
+            color: white;
+            opacity: 0.7;
+        }
+        
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .play-overlay i {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .track-card:hover .play-overlay {
+            opacity: 1;
+        }
+        
+        .track-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        
+        .track-artist {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 4rem 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            margin: 3rem 0;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 74, 61, 0.1);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 74, 61, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 74, 61, 0.2);
+        }
+        
+        .testimonial-content {
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-content p {
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #ff4a3d, #860b0d);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .author-avatar i {
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .author-info h4 {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+        
+        .author-info p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.8rem;
+        }
+        
+        /* Call to Action Section */
+        .cta-section {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: linear-gradient(45deg, rgba(255, 74, 61, 0.1), rgba(134, 11, 13, 0.1));
+            border-radius: 20px;
+            border: 1px solid rgba(255, 74, 61, 0.2);
+            margin: 3rem 0;
+        }
+        
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(255, 74, 61, 0.3);
+        }
+        
+        .cta-description {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .sitelogo {
+                font-size: 35px;
+                margin-left: 1rem;
+            }
+            
+            nav {
+                gap: 1rem;
+            }
+            
+            .navitems {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">
+            <i class="fas fa-music"></i>
+            <span>MusicMate</span>
+        </a>
+        
+        <ul class="navbar-nav" id="navbarNav">
+            <li><a href="index.html" class="nav-link active">Home</a></li>
+            <li><a href="client/about.html" class="nav-link">About</a></li>
+            <li><a href="client/music-player.html" class="nav-link">Player</a></li>
+            <li><a href="client/podcasts.html" class="nav-link">Podcasts</a></li>
+            <li><a href="client/contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        
+        <div class="navbar-actions" id="navbarActions">
+            <a href="client/login.html" class="btn-login">Sign In</a>
+        </div>
+        
+        <button class="mobile-toggle" id="mobileToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <div class="main-content">
+        <div class="hero-section">
+            <h1 class="hero-title">MusicMate</h1>
+            <p class="hero-subtitle">Your Ultimate Music Companion</p>
+            
+            <div class="cta-buttons">
+                <a href="client/music-player.html" class="btn-primary">
+                    <i class="fas fa-play me-2"></i>Start Listening
+                </a>
+                <a href="client/login.html" class="btn-secondary">
+                    <i class="fas fa-user me-2"></i>Sign In
+                </a>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-music"></i>
+                </div>
+                <h3 class="feature-title">High Quality Audio</h3>
+                <p class="feature-description">Experience crystal clear sound with our premium audio streaming technology.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-list"></i>
+                </div>
+                <h3 class="feature-title">Custom Playlists</h3>
+                <p class="feature-description">Create and manage your personalized playlists with your favorite tracks.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-podcast"></i>
+                </div>
+                <h3 class="feature-title">Podcasts</h3>
+                <p class="feature-description">Discover amazing podcasts and stay updated with the latest episodes.</p>
+            </div>
+        </div>
+
+        <!-- Statistics Section -->
+        <div class="stats-section">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">10M+</div>
+                    <div class="stat-label">Songs Available</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500K+</div>
+                    <div class="stat-label">Active Users</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50K+</div>
+                    <div class="stat-label">Artists</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Music Streaming</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popular Tracks Section -->
+        <div class="popular-section">
+            <h2 class="section-title">Trending Now</h2>
+            <div class="tracks-grid">
+                <div class="track-card">
+                    <div class="track-image">
+                        <i class="fas fa-music"></i>
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="track-info">
+                        <h4 class="track-title">Blinding Lights</h4>
+                        <p class="track-artist">The Weeknd</p>
+                    </div>
+                </div>
+
+                <div class="track-card">
+                    <div class="track-image">
+                        <i class="fas fa-music"></i>
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="track-info">
+                        <h4 class="track-title">Shape of You</h4>
+                        <p class="track-artist">Ed Sheeran</p>
+                    </div>
+                </div>
+
+                <div class="track-card">
+                    <div class="track-image">
+                        <i class="fas fa-music"></i>
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="track-info">
+                        <h4 class="track-title">Bad Habits</h4>
+                        <p class="track-artist">Ed Sheeran</p>
+                    </div>
+                </div>
+
+                <div class="track-card">
+                    <div class="track-image">
+                        <i class="fas fa-music"></i>
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="track-info">
+                        <h4 class="track-title">Levitating</h4>
+                        <p class="track-artist">Dua Lipa</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonials Section -->
+        <div class="testimonials-section">
+            <h2 class="section-title">What Our Users Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"MusicMate has completely changed how I discover and enjoy music. The sound quality is incredible!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Music Enthusiast</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"The playlist feature is amazing. I can organize all my favorite tracks exactly how I want them."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Mike Chen</h4>
+                            <p>DJ & Producer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Best music streaming platform I've used. Clean interface and excellent performance."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Emma Davis</h4>
+                            <p>Content Creator</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action Section -->
+        <div class="cta-section">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Start Your Musical Journey?</h2>
+                <p class="cta-description">Join millions of music lovers and discover your next favorite song today.</p>
+                <div class="cta-buttons">
+                    <a href="client/signup.html" class="btn-primary">
+                        <i class="fas fa-user-plus" style="margin-right: 0.5rem;"></i>
+                        Get Started Free
+                    </a>
+                    <a href="client/music-player.html" class="btn-secondary">
+                        <i class="fas fa-headphones" style="margin-right: 0.5rem;"></i>
+                        Try Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-spotify"></i></a>
+            </div>
+            <p class="footer-text">&copy; 2024 MusicMate. All rights reserved.</p>
+            <p class="footer-text">Your Ultimate Music Experience</p>
+        </div>
+    </footer>
+
+    <!-- Background Effects -->
+    <div id="blur"></div>
+    <div id="blob"></div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navbarNav = document.getElementById('navbarNav');
+        const navbarActions = document.getElementById('navbarActions');
+        
+        mobileToggle.addEventListener('click', () => {
+            navbarNav.classList.toggle('active');
+            navbarActions.classList.toggle('active');
+            
+            const icon = mobileToggle.querySelector('i');
+            if (navbarNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navbarNav.classList.remove('active');
+                navbarActions.classList.remove('active');
+                const icon = mobileToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Track card interactions
+        document.querySelectorAll('.track-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const trackTitle = card.querySelector('.track-title').textContent;
+                const trackArtist = card.querySelector('.track-artist').textContent;
+                
+                // Simulate playing track
+                alert(`Now playing: "${trackTitle}" by ${trackArtist}\n\nRedirecting to music player...`);
+                
+                setTimeout(() => {
+                    window.location.href = 'client/music-player.html';
+                }, 1500);
+            });
+        });
+
+        // Animated counter for statistics
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                
+                if (target >= 1000000) {
+                    element.textContent = (current / 1000000).toFixed(1) + 'M+';
+                } else if (target >= 1000) {
+                    element.textContent = (current / 1000).toFixed(0) + 'K+';
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 20);
+        }
+
+        // Intersection Observer for stats animation
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    const targets = [10000000, 500000, 50000, 24]; // Target values
+                    
+                    statNumbers.forEach((stat, index) => {
+                        if (index < 3) {
+                            animateCounter(stat, targets[index]);
+                        } else {
+                            stat.textContent = '24/7';
+                        }
+                    });
+                    
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        // Observe stats section
+        const statsSection = document.querySelector('.stats-section');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Smooth scroll for CTA buttons
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to testimonials
+        const testimonialObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.testimonial-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            testimonialObserver.observe(card);
+        });
+
+        // Console welcome message
+        console.log(`
+🎵 Welcome to MusicMate! 🎵
+Built with ❤️ using modern web technologies
+Version: 2.0.0
+        `);
+    </script>
+</body>
+</html>

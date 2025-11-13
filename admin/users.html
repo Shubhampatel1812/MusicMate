@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicMate Admin - User Management</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Admin CSS -->
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="admin-logo">
+                    <i class="fas fa-music"></i>
+                    <span>MusicMate</span>
+                </a>
+                <p class="admin-title">Admin Panel</p>
+            </div>
+            
+            <nav class="admin-nav">
+                <div class="nav-item">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="users.html" class="nav-link active">
+                        <i class="fas fa-users"></i>
+                        <span>User Management</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="music.html" class="nav-link">
+                        <i class="fas fa-music"></i>
+                        <span>Music Library</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="playlists.html" class="nav-link">
+                        <i class="fas fa-list"></i>
+                        <span>Playlists</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="analytics.html" class="nav-link">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Analytics</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="reports.html" class="nav-link">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Reports</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="content.html" class="nav-link">
+                        <i class="fas fa-folder"></i>
+                        <span>Content Manager</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="settings.html" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <header class="admin-header">
+                <h1 class="header-title">User Management</h1>
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="showAddUserModal()">
+                        <i class="fas fa-user-plus"></i>
+                        Add New User
+                    </button>
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-download"></i>
+                        Export Users
+                    </button>
+                </div>
+            </header>
+
+            <div class="admin-content fade-in">
+                <!-- User Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon users">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-number">12,847</div>
+                        <div class="stat-label">Total Users</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> +12.5% this month
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon music">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <div class="stat-number">8,234</div>
+                        <div class="stat-label">Active Users</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> +8.2% this month
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon revenue">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="stat-number">2,156</div>
+                        <div class="stat-label">Premium Users</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> +15.3% this month
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon analytics">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <div class="stat-number">342</div>
+                        <div class="stat-label">New This Week</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> +22.1% this week
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search and Filters -->
+                <div class="card" style="margin-bottom: 2rem;">
+                    <div class="card-body">
+                        <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 1rem; align-items: end;">
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label class="form-label">Search Users</label>
+                                <input type="text" class="form-control" placeholder="Search by name, email, or ID..." id="userSearch">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label class="form-label">Status</label>
+                                <select class="form-control" id="statusFilter">
+                                    <option value="">All Status</option>
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                    <option value="suspended">Suspended</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label class="form-label">Plan</label>
+                                <select class="form-control" id="planFilter">
+                                    <option value="">All Plans</option>
+                                    <option value="free">Free</option>
+                                    <option value="premium">Premium</option>
+                                    <option value="family">Family</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-search"></i>
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Users Table -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">All Users</h3>
+                        <div style="display: flex; gap: 1rem;">
+                            <select class="form-control" style="width: auto;">
+                                <option>10 per page</option>
+                                <option>25 per page</option>
+                                <option>50 per page</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-body" style="padding: 0;">
+                        <div class="table-container">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <input type="checkbox" id="selectAll">
+                                        </th>
+                                        <th>User</th>
+                                        <th>Email</th>
+                                        <th>Plan</th>
+                                        <th>Join Date</th>
+                                        <th>Last Active</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="usersTableBody">
+                                    <tr>
+                                        <td><input type="checkbox" class="user-checkbox"></td>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                                <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600;">
+                                                    JD
+                                                </div>
+                                                <div>
+                                                    <div style="font-weight: 600;">John Doe</div>
+                                                    <div style="font-size: 0.8rem; color: var(--text-muted);">ID: #12847</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>john.doe@email.com</td>
+                                        <td><span class="badge badge-warning">Premium</span></td>
+                                        <td>Jan 15, 2024</td>
+                                        <td>2 hours ago</td>
+                                        <td><span class="badge badge-success">Active</span></td>
+                                        <td>
+                                            <div style="display: flex; gap: 0.5rem;">
+                                                <button class="btn btn-secondary" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;" onclick="viewUser(12847)">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn btn-primary" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;" onclick="editUser(12847)">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn" style="padding: 0.25rem 0.5rem; font-size: 0.8rem; background: var(--danger-color); color: white;" onclick="suspendUser(12847)">
+                                                    <i class="fas fa-ban"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" class="user-checkbox"></td>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                                <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(45deg, var(--info-color), var(--primary-color)); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600;">
+                                                    SS
+                                                </div>
+                                                <div>
+                                                    <div style="font-weight: 600;">Sarah Smith</div>
+                                                    <div style="font-size: 0.8rem; color: var(--text-muted);">ID: #12846</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>sarah.smith@email.com</td>
+                                        <td><span class="badge badge-info">Free</span></td>
+                                        <td>Jan 12, 2024</td>
+                                        <td>1 day ago</td>
+                                        <td><span class="badge badge-success">Active</span></td>
+                                        <td>
+                                            <div style="display: flex; gap: 0.5rem;">
+                                                <button class="btn btn-secondary" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;" onclick="viewUser(12846)">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn btn-primary" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;" onclick="editUser(12846)">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn" style="padding: 0.25rem 0.5rem; font-size: 0.8rem; background: var(--danger-color); color: white;" onclick="suspendUser(12846)">
+                                                    <i class="fas fa-ban"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" class="user-checkbox"></td>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                                <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(45deg, var(--success-color), var(--info-color)); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600;">
+                                                    MJ
+                                                </div>
+                                                <div>
+                                                    <div style="font-weight: 600;">Mike Johnson</div>
+                                                    <div style="font-size: 0.8rem; color: var(--text-muted);">ID: #12845</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>mike.johnson@email.com</td>
+                                        <td><span class="badge badge-success">Family</span></td>
+                                        <td>Jan 10, 2024</td>
+                                        <td>3 days ago</td>
+                                        <td><span class="badge badge-danger">Suspended</span></td>
+                                        <td>
+                                            <div style="display: flex; gap: 0.5rem;">
+                                                <button class="btn btn-secondary" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;" onclick="viewUser(12845)">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn btn-primary" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;" onclick="editUser(12845)">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn" style="padding: 0.25rem 0.5rem; font-size: 0.8rem; background: var(--success-color); color: white;" onclick="activateUser(12845)">
+                                                    <i class="fas fa-check"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div style="display: flex; justify-content: between; align-items: center; margin-top: 1rem;">
+                    <div style="color: var(--text-muted);">
+                        Showing 1-10 of 12,847 users
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="btn btn-secondary">Previous</button>
+                        <button class="btn btn-primary">1</button>
+                        <button class="btn btn-secondary">2</button>
+                        <button class="btn btn-secondary">3</button>
+                        <button class="btn btn-secondary">Next</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // User management functions
+        function showAddUserModal() {
+            alert('Add User Modal would open here');
+        }
+
+        function viewUser(userId) {
+            alert(`Viewing user details for ID: ${userId}`);
+        }
+
+        function editUser(userId) {
+            alert(`Editing user with ID: ${userId}`);
+        }
+
+        function suspendUser(userId) {
+            if (confirm(`Are you sure you want to suspend user ${userId}?`)) {
+                alert(`User ${userId} has been suspended`);
+            }
+        }
+
+        function activateUser(userId) {
+            if (confirm(`Are you sure you want to activate user ${userId}?`)) {
+                alert(`User ${userId} has been activated`);
+            }
+        }
+
+        // Select all functionality
+        document.getElementById('selectAll').addEventListener('change', function() {
+            const checkboxes = document.querySelectorAll('.user-checkbox');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = this.checked;
+            });
+        });
+
+        // Search functionality
+        document.getElementById('userSearch').addEventListener('input', function() {
+            // Implement search logic here
+            console.log('Searching for:', this.value);
+        });
+    </script>
+</body>
+</html>

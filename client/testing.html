@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 200px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.card img {
+  width: 100%;
+}
+
+.card-info {
+  text-align: center;
+}
+
+.music-player {
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.music-info {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.music-info h3 {
+  margin: 0;
+}
+
+.music-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.music-controls button {
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin: 0 10px;
+  outline: none;
+}
+
+.music-slider {
+  margin-top: 10px;
+}
+
+.music-slider input[type="range"] {
+  width: 100%;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card" onclick="changeSong(0)">
+      <img src="song1.jpg" alt="Song 1">
+      <div class="card-info">
+        <h2>Song 1</h2>
+        <p>Artist 1</p>
+      </div>
+    </div>
+    <div class="card" onclick="changeSong(1)">
+      <img src="song2.jpg" alt="Song 2">
+      <div class="card-info">
+        <h2>Song 2</h2>
+        <p>Artist 2</p>
+      </div>
+    </div>
+    <div class="card" onclick="changeSong(2)">
+      <img src="song3.jpg" alt="Song 3">
+      <div class="card-info">
+        <h2>Song 3</h2>
+        <p>Artist 3</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="music-player">
+    <audio id="audio-player"></audio>
+    <div class="music-info">
+      <h3 id="song-title"></h3>
+      <p id="song-artist"></p>
+    </div>
+    <div class="music-controls">
+      <button id="prev-btn" onclick="prevSong()">&#8249;</button>
+      <button id="play-btn" onclick="playPauseSong()">▶</button>
+      <button id="next-btn" onclick="nextSong()">&#8250;</button>
+    </div>
+    <div class="music-slider">
+      <input type="range" min="0" max="100" value="0" id="music-slider">
+    </div>
+  </div>  
+  <script>
+    var songs = [
+  {
+    title: "Desi Kalakar",
+    artist: "Honey Singh",
+    file: "audios/Desi Kalakaar Full AUDIO Song Yo Yo Honey Singh Desi Kalakaar, Honey Singh New Songs 2014.mp3",
+    image: "images/posters/desikalakar.png"
+  },
+  {
+    title: "Superman",
+    artist: "Honey Singh",
+    file: "audios/SUPERMAN Full Song ZORAWAR Yo Yo Honey Singh T-Series.mp3",
+    image: "images/posters/superman.jpeg"
+  },
+  {
+    title: "Song 3" , 
+    artist: "Artist 3",
+    file: "song3.mp3",
+    image: "song3.jpg"
+  }
+];
+
+var audioPlayer = document.getElementById("audio-player");
+var songTitle = document.getElementById("song-title");
+var songArtist = document.getElementById("song-artist");
+var playBtn = document.getElementById("play-btn");
+var prevBtn = document.getElementById("prev-btn");
+var nextBtn = document.getElementById("next-btn");
+var musicSlider = document.getElementById("music-slider");
+var currentSongIndex = 0;
+
+function loadSong(index) {
+  var song = songs[index];
+  audioPlayer.src = song.file;
+  songTitle.innerHTML = song.title;
+  songArtist.innerHTML = song.artist;
+  currentSongIndex = index;
+}
+
+function playPauseSong() {
+  if (audioPlayer.paused) {
+    audioPlayer.play();
+    playBtn.innerHTML = "❚❚";
+  } else {
+    audioPlayer.pause();
+    playBtn.innerHTML = "▶";
+  }
+}
+
+function prevSong() {
+  var index = (currentSongIndex - 1 + songs.length) % songs.length;
+  loadSong(index);
+  playPauseSong();
+}
+
+function nextSong() {
+  var index = (currentSongIndex + 1) % songs.length;
+  loadSong(index);
+  playPauseSong();
+}
+
+function changeSong(index) {
+  if (index === currentSongIndex) {
+    playPauseSong();
+  } else {
+    loadSong(index);
+    playPauseSong();
+  }
+}
+
+audioPlayer.addEventListener("ended", nextSong);
+musicSlider.addEventListener("input", function() {
+  audioPlayer.currentTime = (audioPlayer.duration / 100) * musicSlider.value;
+});
+
+loadSong(currentSongIndex);
+
+
+  </script>
+</body>
+</html>

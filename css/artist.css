@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Neonderthaw&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, rgb(0,0,0,.95), rgba(100,0,40));
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    overflow: hidden;
+    overflow-x: hidden;
+}
+
+header {
+    height: 15vh;
+    width: 100vw;
+    display: flex;
+    position: fixed;
+}
+
+.logo {
+    width: 55vw;
+    height: 15vh;
+}
+
+.sitelogo {
+    color: #0e3742;
+    font-family: 'Neonderthaw', cursive;    
+    margin-left: 2rem;
+    font-size: 50px;
+    animation: animate 3s linear infinite;
+}
+
+@keyframes animate {
+    0%,20%,40%,50%,80%,99%
+    {
+        color: #0e3742;
+        text-shadow: none;
+    }
+    100%,20%,40%,45.1%,60%,86%,0%
+    {
+        color: #fff;
+        text-shadow: 0 0 10px #ff4a3d,
+        0 0 20px #ff4a3d,
+        0 0 40px #ff4a3d,
+        0 0 80px #ff4a3d,
+        0 0 100px #030303;
+    }
+}
+
+header > nav {
+    float: left;
+    display: flex;
+    justify-content: center;
+    height: 12.7vh;
+    margin-top: 7px;
+}
+
+.navitems {
+    text-overflow: ellipsis;
+    text-decoration: none;
+    margin: 1.5rem;
+    color: gray;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-family: 'Tilt Neon', cursive;
+    transition: .8s ease-in-out;
+}
+
+.navitems:hover {
+    color: white;
+    transform: scale(1.03);
+    transition: .2s ease-in;
+    height: fit-content;
+    text-shadow: 0 0 10px #ff4a3d,
+    0 0 20px #ff4a3d,
+    0 0 40px #ff4a3d,
+    0 0 80px #ff4a3d,
+    0 0 100px #030303;
+}
+
+.profilepic{
+    margin-top: 1%;
+    height: 10vh;
+    border-radius: 50%;
+}
+
+.profilepic:hover {
+    transform: scale(1.02);
+    transition: .2s ease-in;
+    box-shadow: 8px 0px 120px 1px #ff4a3d;
+    text-shadow: 0 0 10px #ff4a3d,
+        0 0 20px #ff4a3d,
+        0 0 40px #ff4a3d,
+        0 0 80px #ff4a3d,
+        0 0 100px #030303;
+}
+
+#blur {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+    backdrop-filter: blur(12vmax);
+}
+
+#blob {
+    background-color: white;
+    height: 12vmax;
+    aspect-ratio: 1;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    border-radius: 50%;
+    background: linear-gradient(to right, #370000,#860b0d);
+    animation: rotate 20s infinite;
+    opacity: 0.8;
+    z-index: 1;
+}
+
+@keyframes rotate {
+    from {
+      rotate: 0deg;
+    }
+    
+    50% {
+      scale: 1 1.5;
+    }
+    
+    to {
+      rotate: 360deg;
+    }
+  }
+  
+* {
+    z-index: 3;
+}
+
+.mainsection {
+    display: flex;
+    height: 80vh;
+    width: 100vw;
+    margin: 6rem;
+}
+
+.artistimg {
+    background: rgba(110,110,110,.1);
+    box-sizing: border-box;
+    box-shadow: 0px 0px 85px 2px rgba(5,5,5,.3);
+    width: 25%;
+    z-index: 2;
+    height: 45vh;
+    overflow: hidden;
+    margin-top: 2.5%;
+    margin-left: 5%;
+    border-radius: 10px; 
+    outline: 1px solid rgba(110,110,110,.1);
+    
+}
+
+.artistimg > img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.descript {
+    z-index: 4;
+    font-family: 'Jost', sans-serif;
+    margin: 60px;
+    margin-top: 2.5%;
+    
+    border-radius: 10px; 
+    background: rgba(110,110,110,.1);
+    box-sizing: border-box;
+    box-shadow: 0px 0px 100px rgba(0,0,0,.4);
+    backdrop-filter: blur(30px);
+    width: 50%;
+    height: 71vh;
+    color: white;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.desc-content {
+    font-size: 25px;
+    padding: 5px 50px;
+    color: gray;
+}
+
+.meta-link {
+    align-items: center;
+    text-decoration: none;
+    backdrop-filter: blur(3px);
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    cursor: pointer;  
+    display: grid;
+    justify-content: center;
+    gap: 5px;
+    height: 8vh;
+    width: 38.6vw;
+    padding: 10px 20px;
+    transition: background-color 400ms, border-color 400ms;
+  }
+  
+  .meta-link:hover {
+    background-color: rgba(25, 5, 5, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }

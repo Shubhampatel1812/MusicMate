@@ -1,0 +1,450 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Neonderthaw&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, rgb(0,0,0,.95), rgba(100,0,40));
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    overflow: hidden;
+    
+    overflow-x: hidden;
+}
+
+header {
+    
+    height: 15vh;
+    width: 100vw;
+    display: flex;
+    position: fixed;
+}
+
+.logo {
+    width: 55vw;
+    height: 15vh;
+    
+}
+
+.sitelogo {
+    color: #0e3742;
+    font-family: 'Neonderthaw', cursive;    
+    margin-left: 2rem;
+    font-size: 50px;
+    animation: animate 3s linear infinite;
+}
+
+@keyframes animate {
+    0%,20%,40%,50%,80%,99%
+    {
+        color: #0e3742;
+        text-shadow: none;
+    }
+    100%,20%,40%,45.1%,60%,86%,0%
+    {
+        color: #fff;
+        text-shadow: 0 0 10px #ff4a3d,
+        0 0 20px #ff4a3d,
+        0 0 40px #ff4a3d,
+        0 0 80px #ff4a3d,
+        0 0 100px #030303;
+    }
+}
+
+
+header > nav {
+    float: left;
+  
+    display: flex;
+    justify-content: center;
+    height: 12.7vh;
+    margin-top: 7px;
+}
+
+.navitems {
+   
+    text-overflow: ellipsis;
+    text-decoration: none;
+    margin: 1.5rem;
+    color: gray;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-family: 'Tilt Neon', cursive;
+    transition: .8s ease-in-out;
+}
+
+.navitems:hover {
+    color: white;
+    transform: scale(1.03);
+    transition: .2s ease-in;
+    height: fit-content;
+    text-shadow: 0 0 10px #ff4a3d,
+    0 0 20px #ff4a3d,
+    0 0 40px #ff4a3d,
+    0 0 80px #ff4a3d,
+    0 0 100px #030303;
+}
+
+.profilepic{
+    margin-top: 1%;
+    height: 10vh;
+    border-radius: 50%;
+   
+}
+
+.profilepic:hover {
+    transform: scale(1.02);
+    transition: .2s ease-in;
+    box-shadow: 8px 0px 120px 1px #ff4a3d;
+    text-shadow: 0 0 10px #ff4a3d,
+        0 0 20px #ff4a3d,
+        0 0 40px #ff4a3d,
+        0 0 80px #ff4a3d,
+        0 0 100px #030303;
+}
+
+#blur {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+    backdrop-filter: blur(12vmax);
+}
+
+#blob {
+    background-color: white;
+    height: 12vmax;
+    aspect-ratio: 1;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    border-radius: 50%;
+    background: linear-gradient(to right, #370000,#860b0d);
+    animation: rotate 20s infinite;
+    opacity: 0.8;
+    z-index: 1;
+}
+
+@keyframes rotate {
+    from {
+      rotate: 0deg;
+    }
+    
+    50% {
+      scale: 1 1.5;
+    }
+    
+    to {
+      rotate: 360deg;
+    }
+  }
+  
+* {
+    z-index: 3;
+}
+
+.playlistsdiv {
+  box-shadow: 0px 0px 100px rgba(0,0,0,.2);
+  outline: 1px solid rgba(110,110,110,.4);
+  background: rgba(110,1,10,.1);
+  height: 90vh;
+  width: 18vw;
+  overflow: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  box-sizing: border-box;
+  border-radius: 25px;
+  position: absolute;
+  margin-top: 8%;
+  margin-left: 1%;
+}
+
+.card {
+  background-color: rgba(80, 80, 80, 0.148);
+  outline: 1px solid rgb(200,200,200,.1);
+  font-family: 'Tilt Neon', cursive;
+  margin: 10px;
+  margin-top: 15px;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+ 
+  transition: ease-in-out 0.3s;
+  border-radius: 18px;
+  transition: 0.2s ease-in-out;
+  height: 200px;
+  width: 200px;
+}
+
+.active-card{
+  background-color: rgba(80, 80, 80, 0.148);
+  
+  box-shadow: 0 0 400px 2px rgba(100,100,100,.3);
+  animation: animate2 3s linear infinite;
+}
+
+@keyframes animate2 {
+  0%,20%,40%,50%,80%,99%
+  {
+      color: #0e3742;
+      box-shadow: none;
+  }
+  100%,20%,40%,45.1%,60%,86%,0%
+  {
+      color: #fff;
+      box-shadow: 0 0 10px 0px  rgba(100,100,100,.2),
+      0 0 10px 0px  rgba(100,100,100,.2),
+      0 0 10px 0px  rgba(100,100,100,.2),
+      0 0 10px 0px rgba(100,100,100,.2),
+      0 0 100px 1px rgba(100,100,100,.1);
+  }
+}
+
+.card > a {
+  text-decoration: none;
+}
+
+.texto {
+  color: gray;
+  margin-left: 8%;
+  text-shadow: 0 0 30px #555555,
+    0 0 40px #555,
+    0 0 50px #555,
+    0 0 90px #555,
+    0 0 110px #555;
+}
+
+.card:hover {
+  background: rgb(20, 0, 0,.4);
+  
+  outline: 1px solid rgb(200,200,200,.2);
+  transform: scale3d(1.01, 1.01, 1.01);
+}
+
+.card img {
+  object-fit: cover;
+  border-radius: 15%;
+  width: 17vw;
+  height: 30vh;
+  z-index: 1;
+}
+
+
+.main-div {
+    outline: 1px solid rgba(110,110,110,.4);
+    height: 90vh;
+   
+    margin-top: 8%;
+    margin-left: 21%;
+    background: rgba(110,1,10,.1);
+    box-sizing: border-box;
+    box-shadow: 0px 0px 100px rgba(0,0,0,.2);
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.music-player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2.5rem;
+    margin-left: 4rem;
+    height: 65vh;
+    width: fit-content;
+    border-radius: 12px;
+    padding: 10px 10px;
+    outline: 1px solid rgba(110,110,110,.4);
+    box-shadow: 0px 0px 25px 10px rgba(0,0,0,.2);    
+    background-color: rgba(70,70,70,.1);
+    overflow: hidden;
+  }
+
+  .music-image {
+    width: 200px;
+    height: 200px;
+    outline: 1px solid rgba(110,110,110,.4);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 25px 10px rgba(100,100,100,.1);    
+    overflow: hidden;
+    object-fit: cover;
+  }
+
+  .music-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 15px;
+    margin-top: -15px;
+    font-family: 'Poppins', cursive;    
+  }
+  
+  #song-title {
+    font-size: 24px;
+    color: white;
+    margin: 0 0 0 0px;
+    text-align: center;
+  }
+
+  #song-artist {
+    margin-top: -6px;
+    
+    color: gray;
+  }
+  
+  #music-slider {
+
+    margin-top: 10px;
+    height: 5px;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  input[type="range"]::-moz-range-track {
+  background: #860b0d;
+  box-shadow: 0 0 10px #ff4a3d;
+  border-radius: 99px;
+  height: 5px;
+}
+
+  input[type="range"]::-moz-range-thumb {
+  height: 8px;
+  width: 15px;
+  border-radius: 30%;
+  border: none;
+  background-color: rgb(10,10,10,.5);
+  box-shadow: 0 0 20px 3px rgba(10,1,10,.6);
+} 
+  
+  .music-controls {
+   
+    
+    display: flex;
+    align-items: center;
+    padding: 5px 20px;
+    border-radius: 12px; 
+    
+    box-sizing: border-box;
+   
+  }
+  
+  #prev-btn, #next-btn {
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    padding: 10px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: rgba(10,1,10,.2);
+    box-sizing: border-box;
+    box-shadow: 0px 0px 100px rgba(0,0,0,.6);
+    transition: .2s ease-in-out;
+  }
+
+  #prev-btn > img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  #next-btn > img {
+    width: 20px;
+    height: 20px;
+  }
+
+  #play-btn {
+    border: none;
+    background: rgba(10,1,10,.2);
+    box-sizing: border-box;
+    box-shadow: 0px 0px 100px rgba(0,0,0,.6);
+    color: #fff;
+    font-size: 15px;
+    padding: 13px 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: 5px 10px;
+    transition: .1s ease-in;
+  }
+
+  #play-btn:hover, #prev-btn:hover , #next-btn:hover {
+    transform: scale(1.03);
+  }
+
+  #play-btn:active, #prev-btn:active , #next-btn:active {
+    background-color: rgba(100,100,100,.1);
+  }
+  
+  .playlist {
+    height: 71vh;
+    width: 55vw;
+    margin-top: 3%;
+    margin-left: 4%;
+    border-radius: 12px;
+    overflow: hidden;  
+    overflow-y: scroll;
+    scrollbar-width: none;
+    display: flex;
+    flex-wrap: wrap;
+    
+  }
+
+  .musiccard {
+    outline: 1px solid rgba(110,110,110,.3);
+    box-shadow: 0px 0px 20px 1px rgba(0,0,0,.2);    
+    background-color: rgba(70,70,70,.1);
+    height: 18vh;
+    width: 22vw;
+    margin: 2%;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;  
+    transition: .3s;
+    cursor: pointer;
+  }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+  
+  .music-card-title {
+    color: gray;
+   
+    font-size: 22px;
+    height: fit-content;
+    margin: 1px;
+    margin-top: -5px;
+    width: fit-content;
+  }
+  .music-card-title > pre {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .music-card-img {
+    overflow: hidden;
+    border-radius: 5px;
+    height: 14.1666666666667vh;
+    width: 6.1666666666667vw;
+    margin: 10px 10px;
+    
+  }
+  
+  .music-card-img > img {
+    object-fit: cover;
+    height: 80px;
+    width: 80px;
+  }
+
+  .musiccard:hover {
+    transform: scale(1.04);
+    background-color: rgba(0,0,0,.2);
+  }
+
+  .musiccard:active {
+    outline: 1px solid rgba(110,11,11,.4);
+    
+    background-color: rgba(70,70,70,.1);
+  }

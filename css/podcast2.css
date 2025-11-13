@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Neonderthaw&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, rgb(0,0,0,.95), rgba(100,0,40));
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    overflow: hidden;
+    /* overflow-y: scroll; */
+    overflow-x: hidden;
+}
+
+header {
+    /* outline: 1px solid white; */
+    height: 15vh;
+    width: 100vw;
+    display: flex;
+    position: fixed;
+}
+
+.logo {
+    width: 55vw;
+    height: 15vh;
+    /* outline: 1px solid white; */
+}
+
+.sitelogo {
+    color: #0e3742;
+    font-family: 'Neonderthaw', cursive;    
+    margin-left: 2rem;
+    font-size: 50px;
+    animation: animate 3s linear infinite;
+}
+
+.meta-link {
+  text-decoration: none;
+  background-color: rgb(100,100,100,.35);
+  margin-left: 10px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px 0px rgba(100,100,100,.5);
+}
+@keyframes animate {
+    0%,20%,40%,50%,80%,99%
+    {
+        color: #0e3742;
+        text-shadow: none;
+    }
+    100%,20%,40%,45.1%,60%,86%,0%
+    {
+        color: #fff;
+        text-shadow: 0 0 10px #ff4a3d,
+        0 0 20px #ff4a3d,
+        0 0 40px #ff4a3d,
+        0 0 80px #ff4a3d,
+        0 0 100px #030303;
+    }
+}
+
+header > nav {
+    float: left;
+    /* outline: 1px solid white; */
+    display: flex;
+    justify-content: center;
+    height: 12.7vh;
+    margin-top: 7px;
+}
+
+.navitems {
+    /* overflow: hidden; */
+    text-overflow: ellipsis;
+    text-decoration: none;
+    margin: 1.5rem;
+    color: gray;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-family: 'Tilt Neon', cursive;
+    transition: .8s ease-in-out;
+}
+
+.navitems:hover {
+    color: white;
+    transform: scale(1.03);
+    transition: .2s ease-in;
+    height: fit-content;
+    text-shadow: 0 0 10px #ff4a3d,
+    0 0 20px #ff4a3d,
+    0 0 40px #ff4a3d,
+    0 0 80px #ff4a3d,
+    0 0 100px #030303;
+}
+
+.profilepic{
+    margin-top: 1%;
+    height: 10vh;
+    border-radius: 50%;
+    /* margin-left: 1.9%; */
+}
+
+.profilepic:hover {
+    transform: scale(1.02);
+    transition: .2s ease-in;
+    box-shadow: 8px 0px 120px 1px #ff4a3d;
+    text-shadow: 0 0 10px #ff4a3d,
+        0 0 20px #ff4a3d,
+        0 0 40px #ff4a3d,
+        0 0 80px #ff4a3d,
+        0 0 100px #030303;
+}
+
+#blur {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+    backdrop-filter: blur(12vmax);
+}
+
+#blob {
+    background-color: white;
+    height: 12vmax;
+    aspect-ratio: 1;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    border-radius: 50%;
+    background: linear-gradient(to right, #370000,#860b0d);
+    animation: rotate 20s infinite;
+    opacity: 0.8;
+    z-index: 1;
+}
+
+@keyframes rotate {
+    from {
+      rotate: 0deg;
+    }
+    
+    50% {
+      scale: 1 1.5;
+    }
+    
+    to {
+      rotate: 360deg;
+    }
+  }
+  
+* {
+    z-index: 3;
+}
+
+.main-div {
+    outline: 1px solid rgba(110,110,110,.4);
+    height: 90vh;
+    width: 90vw;
+    margin-top: 8%;
+    margin-left: 5%;
+    background: rgba(110,1,10,.1);
+    box-sizing: border-box;
+    box-shadow: 0px 0px 100px rgba(0,0,0,.2);
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.music-player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2.6rem;
+    margin-left: 3rem;
+    height: 60vh;
+    width: fit-content;
+    border-radius: 12px;
+    padding: 10px 10px;
+    outline: 1px solid rgba(110,110,110,.4);
+    box-shadow: 0px 0px 25px 10px rgba(0,0,0,.2);    
+    background-color: rgba(70,70,70,.1);
+    overflow: hidden;
+  }
+  
+  .music-image {
+    width: 300px;
+    height: 400px;
+    outline: 1px solid rgba(110,110,110,.4);
+    background-image: url(images/posters/sysk.png);
+    border-radius: 12px;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 25px 10px rgba(100,100,100,.1);    
+  }
+
+  
+.descript {
+  z-index: 4;
+  font-family: 'Jost', sans-serif;
+  /* outline: 1px solid white; */
+  margin: 60px;
+  margin-top: 2.5%;
+  /* outline: 1px solid rgba(110,110,110,.1); */
+  
+  border-radius: 10px; 
+  /* background-color: rgba(255, 255, 255, 0.05); */
+  /* border: 1px solid rgba(255, 255, 255, 0.1); */
+  background: rgba(110,110,110,.1);
+  box-sizing: border-box;
+  box-shadow: 0px 0px 100px rgba(0,0,0,.4);
+  backdrop-filter: blur(30px);
+  width: 50%;
+  height: 71vh;
+  color: white;
+  overflow: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.desc-content {
+  font-size: 25px;
+  padding: 5px 50px;
+  color: gray;
+}
+
+
+  .music-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  #music-title {
+    font-size: 24px;
+    margin: 0;
+    text-align: center;
+  }
+  
+  #music-slider {
+    width: 80%;
+    margin-top: 10px;
+  }
+  
+  
+  .music-controls {
+    outline: 1px solid rgba(110,110,110,.3);
+    
+    display: flex;
+    align-items: center;
+    padding: 5px 20px;
+    border-radius: 12px; 
+    background: rgba(10,1,10,.2);
+    box-sizing: border-box;
+    /* box-shadow: 0px 0px 100px rgba(0,0,0,.6); */
+    box-shadow: 0px 0px 25px 10px rgba(100,100,100,.1);    
+    background-color: rgba(70,70,70,.1);
+  }
+  
+  .prev-button, .next-button {
+    border: none;
+    color: #fff;
+    font-size: 8px;
+    padding: 10px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: rgba(10,1,10,.2);
+    box-sizing: border-box;
+    box-shadow: 0px 0px 100px rgba(0,0,0,.6);
+    transition: .3s ease-in-out;
+  }
+  
+  .play-button {
+    border: none;
+    background: rgba(10,1,10,.3);
+    box-sizing: border-box;
+    box-shadow: 0px 0px 100px rgba(0,0,0,.6);
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 10px;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: 5px 8px;
+    transition: .1s ease-in;
+  }
+
+  .play-button:hover, .prev-button:hover , .next-button:hover {
+    transform: scale(1.04);
+  }
+
+  .play-button:active, .prev-button:active , .next-button:active {
+    background-color: rgba(100,100,100,.1);
+  }
+  
+  .playlist {
+    /* outline: 1px solid rgba(110,110,110,.4);
+    box-shadow: 0px 0px 25px 10px rgba(0,0,0,.2);    
+    background-color: rgba(70,70,70,.1); */
+    height: 68vh;
+    width: 50vw;
+    margin-top: 3.8%;
+    margin-left: -14%;
+    border-radius: 12px;
+    overflow: hidden;
+    /* overflow-y: scroll; */
+    scrollbar-width: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
+  .musiccard {
+    outline: 1px solid rgba(110,110,110,.3);
+    box-shadow: 0px 0px 20px 1px rgba(0,0,0,.2);    
+    background-color: rgba(70,70,70,.1);
+    height: 18vh;
+    width: 22vw;
+    margin: 2%;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;  
+  }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+  
+  .music-card-title {
+    color: gray;
+    /* outline: 1px solid white; */
+    font-size: 22px;
+    height: fit-content;
+    margin: 1px;
+    margin-top: -5px;
+    width: fit-content;
+  }
+  .music-card-title > pre {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .music-card-img {
+    overflow: hidden;
+    border-radius: 5px;
+    height: 80px;
+    width: 80px;
+    margin: 10px 10px;
+    /* outline: 1px solid white; */
+  }
+  
+  .music-card-img > img {
+    object-fit: cover;
+    height: 80px;
+    width: 80px;
+  }

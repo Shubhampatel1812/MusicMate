@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicMate Admin - Dashboard</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Admin CSS -->
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="admin-logo">
+                    <i class="fas fa-music"></i>
+                    <span>MusicMate</span>
+                </a>
+                <p class="admin-title">Admin Panel</p>
+            </div>
+            
+            <nav class="admin-nav">
+                <div class="nav-item">
+                    <a href="index.html" class="nav-link active">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="users.html" class="nav-link">
+                        <i class="fas fa-users"></i>
+                        <span>User Management</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="music.html" class="nav-link">
+                        <i class="fas fa-music"></i>
+                        <span>Music Library</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="playlists.html" class="nav-link">
+                        <i class="fas fa-list"></i>
+                        <span>Playlists</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="analytics.html" class="nav-link">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Analytics</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="reports.html" class="nav-link">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Reports</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="content.html" class="nav-link">
+                        <i class="fas fa-folder"></i>
+                        <span>Content Manager</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="settings.html" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <header class="admin-header">
+                <h1 class="header-title">Dashboard Overview</h1>
+                <div class="header-actions">
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-bell"></i>
+                        Notifications
+                    </button>
+                    <a href="../client/login.html" class="btn btn-primary">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </a>
+                </div>
+            </header>
+
+            <div class="admin-content fade-in">
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon users">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-number">12,847</div>
+                        <div class="stat-label">Total Users</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> +12.5% from last month
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon music">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div class="stat-number">3,421</div>
+                        <div class="stat-label">Songs in Library</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> +8.2% from last month
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon revenue">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-number">$24,680</div>
+                        <div class="stat-label">Monthly Revenue</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> +15.3% from last month
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon analytics">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="stat-number">1.2M</div>
+                        <div class="stat-label">Total Plays</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> +22.1% from last month
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Recent Activity</h3>
+                        <a href="reports.html" class="btn btn-secondary">View All</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-container">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>User</th>
+                                        <th>Action</th>
+                                        <th>Song/Content</th>
+                                        <th>Time</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                                <i class="fas fa-user-circle" style="font-size: 1.5rem; color: var(--primary-color);"></i>
+                                                John Doe
+                                            </div>
+                                        </td>
+                                        <td>Played Song</td>
+                                        <td>Blinding Lights - The Weeknd</td>
+                                        <td>2 minutes ago</td>
+                                        <td><span class="badge badge-success">Completed</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                                <i class="fas fa-user-circle" style="font-size: 1.5rem; color: var(--primary-color);"></i>
+                                                Sarah Smith
+                                            </div>
+                                        </td>
+                                        <td>Created Playlist</td>
+                                        <td>My Favorites 2024</td>
+                                        <td>5 minutes ago</td>
+                                        <td><span class="badge badge-info">Active</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                                <i class="fas fa-user-circle" style="font-size: 1.5rem; color: var(--primary-color);"></i>
+                                                Mike Johnson
+                                            </div>
+                                        </td>
+                                        <td>Uploaded Song</td>
+                                        <td>New Track Demo.mp3</td>
+                                        <td>15 minutes ago</td>
+                                        <td><span class="badge badge-warning">Pending</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                                <i class="fas fa-user-circle" style="font-size: 1.5rem; color: var(--primary-color);"></i>
+                                                Emma Wilson
+                                            </div>
+                                        </td>
+                                        <td>Subscribed</td>
+                                        <td>Premium Plan</td>
+                                        <td>1 hour ago</td>
+                                        <td><span class="badge badge-success">Active</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                                <i class="fas fa-user-circle" style="font-size: 1.5rem; color: var(--primary-color);"></i>
+                                                David Brown
+                                            </div>
+                                        </td>
+                                        <td>Reported Issue</td>
+                                        <td>Audio Quality Problem</td>
+                                        <td>2 hours ago</td>
+                                        <td><span class="badge badge-danger">Critical</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div style="margin-top: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">Quick Actions</h3>
+                    <div class="stats-grid">
+                        <a href="music.html" class="card" style="text-decoration: none; color: inherit;">
+                            <div class="card-body" style="text-align: center;">
+                                <i class="fas fa-plus-circle" style="font-size: 2rem; color: var(--success-color); margin-bottom: 1rem;"></i>
+                                <h4>Add New Song</h4>
+                                <p style="color: var(--text-muted); margin-top: 0.5rem;">Upload and manage music content</p>
+                            </div>
+                        </a>
+
+                        <a href="users.html" class="card" style="text-decoration: none; color: inherit;">
+                            <div class="card-body" style="text-align: center;">
+                                <i class="fas fa-user-plus" style="font-size: 2rem; color: var(--info-color); margin-bottom: 1rem;"></i>
+                                <h4>Manage Users</h4>
+                                <p style="color: var(--text-muted); margin-top: 0.5rem;">View and manage user accounts</p>
+                            </div>
+                        </a>
+
+                        <a href="analytics.html" class="card" style="text-decoration: none; color: inherit;">
+                            <div class="card-body" style="text-align: center;">
+                                <i class="fas fa-chart-line" style="font-size: 2rem; color: var(--warning-color); margin-bottom: 1rem;"></i>
+                                <h4>View Analytics</h4>
+                                <p style="color: var(--text-muted); margin-top: 0.5rem;">Check performance metrics</p>
+                            </div>
+                        </a>
+
+                        <a href="settings.html" class="card" style="text-decoration: none; color: inherit;">
+                            <div class="card-body" style="text-align: center;">
+                                <i class="fas fa-cogs" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                                <h4>System Settings</h4>
+                                <p style="color: var(--text-muted); margin-top: 0.5rem;">Configure system preferences</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Simple navigation highlighting
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const currentPage = window.location.pathname.split('/').pop();
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+
+            // Add fade-in animation to stats cards
+            const statCards = document.querySelectorAll('.stat-card');
+            statCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('fade-in');
+                }, index * 100);
+            });
+        });
+
+        // Mobile sidebar toggle (for future mobile implementation)
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.admin-sidebar');
+            sidebar.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

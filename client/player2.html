@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="player.css">
+    <title>MusicMate</title>
+    <style>
+    </style>
+</head>
+<body>
+    <div id="blur"></div>
+    <div id="blob"></div>
+    <script src="LPscript.js"></script>
+    <header>
+        <div class="logo">
+            <a href="" class="sitelogo" style="text-decoration: none;"><Span>musicmate</Span></a>
+        </div>
+            <nav>
+                    <a href="index.html" class="navitems">Home</a>
+                    <a href="about.html" class="navitems">About</a>
+                    <a href="contactus.html" class="navitems">Contact Us</a>
+                    <a href="landingpage.html" class="navitems">Log In</a>
+                    <img src="images/logos/userprofile_stock.jpg" alt="profilepic" class="profilepic">
+            </nav>
+    </header>
+    <div class="playlistsdiv">
+      <div class="card active-card">
+        <a href="player2.html"><div>
+          <img src="images/logos/e4b9eb11db132642084b8d40a6decea5.jpg">
+          <span class="texto">RELAXING LOVE SONGS</span>
+        </div>
+      </a>
+    </div>
+    <div class="card">
+      <a href="player.html"><div>
+          <img src="images/logos/il_fullxfull.2915343654_539n.webp">
+            <span class="texto">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LATEST RELEASE'S</span>
+      </div>
+      </a>
+  </div>
+  <div class="card">
+    <a href="player.html"><div>
+        <img src="images/logos/Biceps.webp">
+          <span class="texto">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GYMTALK</span>
+    </div>
+    </a>
+</div>
+  </div>
+    <div class="main-div">
+        <div class="music-player">
+            <div class="music-image" id="music-image"></div>
+            <div class="music-info">
+              <h3 id="song-title"></h3>
+              <p id="song-artist"></p>
+            </div>
+            <div class="music-slider">
+              <input type="range" min="0" max="100" value="0" id="music-slider">
+            </div>
+            <div class="music-controls">
+                <!-- <button class="prev-button"><img src="images/logos/icons8-skip-to-start-30.png" alt="Prev"></button>
+                <button class="play-button"><img src="images/logos/icons8-play-30.png" alt="Play"></button>
+                <button class="next-button"><img src="images/logos/icons8-end-30.png" alt="Next"></button> &#8249; -->
+                <button id="prev-btn" onclick="prevSong()"> <img src="images/logos/icons8-skip-to-start-30.png" alt="Prev"> </button>
+      <button id="play-btn" onclick="playPauseSong()"> ▶ </button>
+      <button id="next-btn" onclick="nextSong()"> <img src="images/logos/icons8-end-30.png" alt="Next"></button></button>
+            </div>
+            
+          </div>
+          <audio id="audio-player">
+            <!-- <source src="audios/RAPTURE.mp3" type="audio/mp3"> -->
+          </audio>   
+          <div class="playlist">
+             
+             <div class="musiccard" onclick="changeSong(0)">
+              <div class="music-card-img">
+              <img src="images/posters/risesthemoon.png" alt="poster">
+              </div>
+              <div class="music-card-title">
+                <pre>
+Rises the Moon  
+liana flores</pre>
+              </div>
+            </div>
+
+           
+             <div class="musiccard" onclick="changeSong(1)">
+              <div class="music-card-img">
+              <img src="images/posters/fallininlove.png" alt="poster">
+              </div>
+              <div class="music-card-title">
+                <pre>
+C.H.F.In Love
+Elvis Presley</pre>
+              </div>
+            </div>
+
+             
+             <div class="musiccard" onclick="changeSong(2)">
+              <div class="music-card-img">
+              <img src="images/posters/baby.png" alt="poster">
+              </div>
+              <div class="music-card-title">
+                <pre>
+On My Shoulder 
+Paul Anka</pre>
+              </div>
+            </div>
+ 
+               
+             <div class="musiccard" onclick="changeSong(3)">
+              <div class="music-card-img">
+              <img src="images/posters/samjawan.png" alt="poster">
+              </div>
+              <div class="music-card-title">
+                <pre>
+Samjawan
+Arijit Singh</pre>
+              </div>
+            </div>
+ 
+             
+               <div class="musiccard" onclick="changeSong(4)">
+              <div class="music-card-img">
+              <img src="images/posters/darkhast.png" alt="poster">
+              </div>
+              <div class="music-card-title">
+                <pre>
+Darkhaast
+Arijit Singh</pre>
+              </div>
+            </div>
+             
+               <div class="musiccard" onclick="changeSong(5)">
+              <div class="music-card-img">
+              <img src="images/posters/tumsehi.png" alt="poster">
+              </div>
+              <div class="music-card-title">
+                <pre>
+Tum se hi
+Mohit Chauhan </pre>
+              </div>
+            </div>
+
+          </div>       
+    </div>
+    <script>
+        var songs = [
+  {
+    title: "Rises the moon",
+    artist: "liana flores",
+    file: "audios/rises the moon.mp3",
+    image: "<img src='images/posters/risesthemoon.png' id='music-image' style='height:200px; width:200px; object-fit:cover;'>"
+  },
+  {
+    title: "C.H.F.In Love",
+    artist: "Elvis Presley",
+    file: "audios/Elvis Presley - Can't Help Falling in Love (Official Lyric Video).mp3",
+    image: "<img src='images/posters/fallininlove.png' id='music-image' style='height:200px; width:200px;object-fit:cover;'>"
+  },
+  {
+    title: "On My Shoulder",
+    artist: "Paul Anka",
+    file: "audios/Put Your Head On My Shoulder.mp3",
+    image: "<img src='images/posters/baby.png' id='music-image' style='height:200px; width:200px;object-fit:cover;'>"
+  },
+  {
+    title: "Samjawan" , 
+    artist: "Arijit Singh",
+    file: "audios/Samjhawan [Slowed and Reverb] - Arijit Singh Shreya Ghoshal Lofi Lover Textaudio.mp3",
+    image: "<img src='images/posters/samjawan.png' id='music-image' style='height:200px; width:200px;object-fit:cover;'>"
+  },
+  {
+    title: "Darkhaast",
+    artist: "Arijit Singh",
+    file: "audios/Darkhaast [Slowed+Reverb]_Arijit Singh_Sunidhi Chauhan.mp3",
+    image: "<img src='images/posters/darkhast.png' id='music-image' style='height:200px; width:200px;object-fit:cover;'>"
+  },
+  {
+    title: "Tum se hi",
+    artist: "Mohit chauhan",
+    file: "audios/Tum Se Hi (Slowed+Reverb) - @MohitChauhanOfficial Lyrics Jab We Met MoonVibes.mp3",
+    image: "<img src='images/posters/tumsehi.png' id='music-image' style='height:200px; width:200px;object-fit:cover;'>"
+  }
+
+];
+
+var audioPlayer = document.getElementById("audio-player");
+var songImg = document.getElementById("music-image");
+var songTitle = document.getElementById("song-title");
+var songArtist = document.getElementById("song-artist");
+var playBtn = document.getElementById("play-btn");
+var prevBtn = document.getElementById("prev-btn");
+var nextBtn = document.getElementById("next-btn");
+var musicSlider = document.getElementById("music-slider");
+var currentSongIndex = 0;
+
+function loadSong(index) {
+  var song = songs[index];
+  audioPlayer.src = song.file;
+  songImg.innerHTML = song.image;
+  songTitle.innerHTML = song.title;
+  songArtist.innerHTML = song.artist;
+  currentSongIndex = index;
+}
+
+function playPauseSong() {
+  if (audioPlayer.paused) {
+    audioPlayer.play();
+    playBtn.innerHTML = "❚❚";
+  } else {
+    audioPlayer.pause();
+    playBtn.innerHTML = "▶";
+  }
+}
+
+function prevSong() {
+  var index = (currentSongIndex - 1 + songs.length) % songs.length;
+  loadSong(index);
+  playPauseSong();
+}
+
+function nextSong() {
+  var index = (currentSongIndex + 1) % songs.length;
+  loadSong(index);
+  playPauseSong();
+}
+
+function changeSong(index) {
+  if (index === currentSongIndex) {
+    playPauseSong();
+  } else {
+    loadSong(index);
+    playPauseSong();
+  }
+}
+
+audioPlayer.addEventListener("ended", nextSong);
+musicSlider.addEventListener("input", function() {
+audioPlayer.currentTime = (audioPlayer.duration / 100) * musicSlider.value;});
+audioPlayer.addEventListener("timeupdate", function() {
+  var currentTime = audioPlayer.currentTime;
+  var duration = audioPlayer.duration;
+  var progress = (currentTime / duration) * 100;
+  musicSlider.value = progress;
+});
+
+
+loadSong(currentSongIndex);
+    </script>
+</body>
+</html> 

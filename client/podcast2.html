@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="podcast2.css">
+    <title>MusicMate</title>
+</head>
+<body>
+    <div id="blur"></div>
+    <div id="blob"></div>
+    <script src="LPscript.js"></script>
+    <header>
+        <div class="logo">
+            <a href="" class="sitelogo" style="text-decoration: none;"><Span>musicmate</Span></a>
+        </div>
+            <nav>
+                    <a href="index.html" class="navitems">Home</a>
+                    <a href="about.html" class="navitems">About</a>
+                    <a href="contactus.html" class="navitems">Contact Us</a>
+                    <a href="landingpage.html" class="navitems">Log In</a>
+                    <img src="images/logos/userprofile_stock.jpg" alt="profilepic" class="profilepic">
+            </nav>
+    </header>
+    <div class="main-div">
+        <div class="music-player">
+            <div class="music-image"></div>
+            <!-- <div class="music-controls"> -->
+                <!-- <button class="prev-button"><img src="images/logos/icons8-skip-to-start-30.png" alt="Prev"></button>
+                <button class="play-button"><img src="images/logos/icons8-play-30.png" alt="Play"></button>
+                <button class="next-button"><img src="images/logos/icons8-end-30.png" alt="Next"></button> &#8249; -->
+            <!-- </div> -->
+          </div>
+          <div class="descript">
+            <p class="desc-content">
+              If you've ever wanted to know about champagne, satanism, the Stonewall Uprising, chaos theory, LSD, El Nino, true crime and Rosa Parks, then look no further. Josh and Chuck have you covered.
+                <div class="teamdetails">
+                    <a id="yt-link" class="meta-link" href="https://www.ted.com/" target="_blank">
+                        <span style="color:gray;">Listen to the SYSK podcast</span>
+                    </a>
+                </div>
+            </p>
+        </div>
+          <!-- <audio id="music-player">
+            <source src="audios/Tsumyoki x Bharg - Pink Blue Official Music Video.mp3" type="audio/mp3">
+          </audio>    -->
+          <!-- <div class="playlist">
+            <div class="musiccard">
+              <div class="music-card-img">
+              <img src="images/posters/pinkblue.png" alt="poster">
+              </div>
+              <div class="music-card-title">
+                <pre>
+Pink Blue
+Tsumyoki</pre>
+              </div>
+            </div>
+            <div class="musiccard">
+              <div class="music-card-img">
+              <img src="images/posters/superman.jpeg" alt="poster">
+              </div>
+              <div class="music-card-title">
+                <pre>
+Superman
+Honey singh</pre>
+              </div>
+            </div>
+            <div class="musiccard">
+              <div class="music-card-img">
+              <img src="images/posters/heavensent.png" alt="poster">
+              </div>
+              <div class="music-card-title">
+                <pre>
+Heaven Sent
+Tevomxntana</pre>
+              </div>
+            </div>
+            <div class="musiccard">
+              <div class="music-card-img">
+              <img src="images/posters/juice.jpg" alt="poster">
+              </div>
+              <div class="music-card-title">
+                <pre>
+Overdrive
+juice wrld</pre>
+              </div>
+            </div>
+              <div class="musiccard">
+              <div class="music-card-img">
+              <img src="images/posters/desikalakar.png" alt="poster">
+              </div>
+              <div class="music-card-title">
+                <pre>
+Desi kalakar
+Honey singh</pre>
+              </div>
+            </div>
+              <div class="musiccard">
+              <div class="music-card-img">
+              <img src="images/posters/rapture.png" alt="poster">
+              </div>
+              <div class="music-card-title">
+                <pre>
+Rapture
+interworld</pre>
+              </div>
+            </div>
+          </div>       
+    </div> -->
+    <!-- <script>
+        const musicPlayer = document.getElementById("music-player");
+const musicImage = document.querySelector(".music-image");
+const playButton = document.querySelector(".play-button");
+const prevButton = document.querySelector(".prev-button");
+const nextButton = document.querySelector(".next-button");
+const cardClick = document.querySelector(".clickcard");
+
+let currentSong = 0;
+let songs = [
+  {
+    name: "TED Talks daily",
+    src: "" ,
+    image: "images/posters/ted.png"
+  }
+  ,
+  {
+    name: "SUPERMAN",
+    src: "audios/SUPERMAN Full Song ZORAWAR Yo Yo Honey Singh T-Series.mp3",
+    image: "images/posters/superman.jpeg"
+  },
+  {
+    name: "Pink Blue",
+    src: "audios/Tsumyoki x Bharg - Pink Blue Official Music Video.mp3",
+    image: "images/posters/pinkblue.png"
+  },
+  {
+    name: "Heaven sent",
+    src: "audios/Heaven Sent.mp3",
+    image: "images/posters/heavensent.png"
+  },
+  {
+    name: "Overdrive",
+    src: "audios/Juice WRLD - Overdrive (Unreleased) [Prod. IanPlug x Levithareal].mp3",
+    image: "images/posters/juice.jpg"
+  },
+  {
+    name: "Rapture",
+    src: "audios/RAPTURE.mp3",
+    image: "images/posters/rapture.png"
+  }
+];
+
+function playSong() {
+  if (musicPlayer.paused) {
+    musicPlayer.play();
+    playButton.innerHTML = "<img src='images/logos/icons8-stop-30.png'>";
+  } else {
+    musicPlayer.pause();
+    playButton.innerHTML = "<img src='images/logos/icons8-play-30.png'>";
+  }
+}
+
+function prevSong() {
+  currentSong--;
+  if (currentSong < 0) {
+    currentSong = songs.length - 1;
+  }
+  musicPlayer.src = songs[currentSong].src;
+  musicImage.style.backgroundImage = `url(${songs[currentSong].image})`;
+  musicPlayer.play();
+  playButton.innerHTML = "<img src='images/logos/icons8-stop-30.png'>";
+}
+
+function nextSong() {
+  currentSong++;
+  if (currentSong > songs.length - 1) {
+    currentSong = 0;
+  }
+  musicPlayer.src = songs[currentSong].src;
+  musicImage.style.backgroundImage = `url(${songs[currentSong].image})`;
+  musicPlayer.play();
+  playButton.innerHTML = "<img src='images/logos/icons8-stop-30.png'>";
+}
+
+playButton.addEventListener("click", playSong);
+prevButton.addEventListener("click", prevSong);
+nextButton.addEventListener("click", nextSong);
+cardClick.addEventListener("click",playSong)
+
+    </script> -->
+</body> 
+</html> 

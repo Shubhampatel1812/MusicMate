@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicMate Admin - Playlists</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Admin CSS -->
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="admin-logo">
+                    <i class="fas fa-music"></i>
+                    <span>MusicMate</span>
+                </a>
+                <p class="admin-title">Admin Panel</p>
+            </div>
+            
+            <nav class="admin-nav">
+                <div class="nav-item">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="users.html" class="nav-link">
+                        <i class="fas fa-users"></i>
+                        <span>User Management</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="music.html" class="nav-link">
+                        <i class="fas fa-music"></i>
+                        <span>Music Library</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="playlists.html" class="nav-link active">
+                        <i class="fas fa-list"></i>
+                        <span>Playlists</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="analytics.html" class="nav-link">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Analytics</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="reports.html" class="nav-link">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Reports</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="content.html" class="nav-link">
+                        <i class="fas fa-folder"></i>
+                        <span>Content Manager</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="settings.html" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <header class="admin-header">
+                <h1 class="header-title">Playlist Management</h1>
+                <div class="header-actions">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i>
+                        Create Playlist
+                    </button>
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-star"></i>
+                        Featured Playlists
+                    </button>
+                </div>
+            </header>
+
+            <div class="admin-content fade-in">
+                <!-- Playlist Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon users">
+                            <i class="fas fa-list"></i>
+                        </div>
+                        <div class="stat-number">2,847</div>
+                        <div class="stat-label">Total Playlists</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> +156 this week
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon music">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-number">45</div>
+                        <div class="stat-label">Featured Playlists</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> +3 this month
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon revenue">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="stat-number">892K</div>
+                        <div class="stat-label">Total Likes</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> +12.3% this month
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon analytics">
+                            <i class="fas fa-share"></i>
+                        </div>
+                        <div class="stat-number">234K</div>
+                        <div class="stat-label">Total Shares</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> +8.7% this month
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Playlists -->
+                <div class="card" style="margin-bottom: 2rem;">
+                    <div class="card-header">
+                        <h3 class="card-title">Featured Playlists</h3>
+                        <button class="btn btn-primary">Manage Featured</button>
+                    </div>
+                    <div class="card-body">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                            <div class="card" style="text-align: center;">
+                                <div class="card-body">
+                                    <div style="width: 100px; height: 100px; background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); border-radius: 15px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-fire" style="font-size: 2rem; color: white;"></i>
+                                    </div>
+                                    <h4>Hot Hits 2024</h4>
+                                    <p style="color: var(--text-muted); font-size: 0.9rem;">45 songs • 2.1M plays</p>
+                                    <span class="badge badge-success">Featured</span>
+                                </div>
+                            </div>
+
+                            <div class="card" style="text-align: center;">
+                                <div class="card-body">
+                                    <div style="width: 100px; height: 100px; background: linear-gradient(45deg, var(--info-color), var(--primary-color)); border-radius: 15px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-headphones" style="font-size: 2rem; color: white;"></i>
+                                    </div>
+                                    <h4>Chill Vibes</h4>
+                                    <p style="color: var(--text-muted); font-size: 0.9rem;">32 songs • 1.8M plays</p>
+                                    <span class="badge badge-success">Featured</span>
+                                </div>
+                            </div>
+
+                            <div class="card" style="text-align: center;">
+                                <div class="card-body">
+                                    <div style="width: 100px; height: 100px; background: linear-gradient(45deg, var(--success-color), var(--info-color)); border-radius: 15px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-dumbbell" style="font-size: 2rem; color: white;"></i>
+                                    </div>
+                                    <h4>Workout Mix</h4>
+                                    <p style="color: var(--text-muted); font-size: 0.9rem;">28 songs • 956K plays</p>
+                                    <span class="badge badge-success">Featured</span>
+                                </div>
+                            </div>
+
+                            <div class="card" style="text-align: center;">
+                                <div class="card-body">
+                                    <div style="width: 100px; height: 100px; background: linear-gradient(45deg, var(--warning-color), var(--danger-color)); border-radius: 15px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-moon" style="font-size: 2rem; color: white;"></i>
+                                    </div>
+                                    <h4>Night Moods</h4>
+                                    <p style="color: var(--text-muted); font-size: 0.9rem;">38 songs • 742K plays</p>
+                                    <span class="badge badge-success">Featured</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- All Playlists Table -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">All Playlists</h3>
+                        <div style="display: flex; gap: 1rem;">
+                            <input type="text" class="form-control" placeholder="Search playlists..." style="width: 250px;">
+                            <select class="form-control" style="width: auto;">
+                                <option>All Types</option>
+                                <option>User Created</option>
+                                <option>Admin Created</option>
+                                <option>Featured</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-body" style="padding: 0;">
+                        <div class="table-container">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Playlist</th>
+                                        <th>Creator</th>
+                                        <th>Songs</th>
+                                        <th>Plays</th>
+                                        <th>Likes</th>
+                                        <th>Created</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                                <div style="width: 50px; height: 50px; background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                                    <i class="fas fa-fire" style="color: white;"></i>
+                                                </div>
+                                                <div>
+                                                    <div style="font-weight: 600;">Hot Hits 2024</div>
+                                                    <div style="font-size: 0.8rem; color: var(--text-muted);">The hottest tracks right now</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>Admin</td>
+                                        <td>45</td>
+                                        <td>2.1M</td>
+                                        <td>89K</td>
+                                        <td>Jan 1, 2024</td>
+                                        <td><span class="badge badge-success">Featured</span></td>
+                                        <td>
+                                            <div style="display: flex; gap: 0.5rem;">
+                                                <button class="btn btn-secondary" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn btn-primary" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn" style="padding: 0.25rem 0.5rem; font-size: 0.8rem; background: var(--warning-color); color: white;">
+                                                    <i class="fas fa-star"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                                <div style="width: 50px; height: 50px; background: linear-gradient(45deg, var(--info-color), var(--primary-color)); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                                    <i class="fas fa-heart" style="color: white;"></i>
+                                                </div>
+                                                <div>
+                                                    <div style="font-weight: 600;">My Favorites</div>
+                                                    <div style="font-size: 0.8rem; color: var(--text-muted);">Personal collection</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>John Doe</td>
+                                        <td>23</td>
+                                        <td>45K</td>
+                                        <td>2.3K</td>
+                                        <td>Jan 15, 2024</td>
+                                        <td><span class="badge badge-info">Public</span></td>
+                                        <td>
+                                            <div style="display: flex; gap: 0.5rem;">
+                                                <button class="btn btn-secondary" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn btn-primary" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn" style="padding: 0.25rem 0.5rem; font-size: 0.8rem; background: var(--danger-color); color: white;">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        console.log('Playlists management page loaded');
+    </script>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicMate Admin - Content Manager</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Admin CSS -->
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="admin-logo">
+                    <i class="fas fa-music"></i>
+                    <span>MusicMate</span>
+                </a>
+                <p class="admin-title">Admin Panel</p>
+            </div>
+            
+            <nav class="admin-nav">
+                <div class="nav-item">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="users.html" class="nav-link">
+                        <i class="fas fa-users"></i>
+                        <span>User Management</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="music.html" class="nav-link">
+                        <i class="fas fa-music"></i>
+                        <span>Music Library</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="playlists.html" class="nav-link">
+                        <i class="fas fa-list"></i>
+                        <span>Playlists</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="analytics.html" class="nav-link">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Analytics</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="reports.html" class="nav-link">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Reports</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="content.html" class="nav-link active">
+                        <i class="fas fa-folder"></i>
+                        <span>Content Manager</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="settings.html" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <header class="admin-header">
+                <h1 class="header-title">Content Manager</h1>
+                <div class="header-actions">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-upload"></i>
+                        Upload Content
+                    </button>
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-folder-plus"></i>
+                        Create Folder
+                    </button>
+                </div>
+            </header>
+
+            <div class="admin-content fade-in">
+                <!-- Content Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon users">
+                            <i class="fas fa-folder"></i>
+                        </div>
+                        <div class="stat-number">1,234</div>
+                        <div class="stat-label">Total Files</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> +67 this week
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon music">
+                            <i class="fas fa-hdd"></i>
+                        </div>
+                        <div class="stat-number">2.4GB</div>
+                        <div class="stat-label">Storage Used</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> +156MB this week
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon revenue">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <div class="stat-number">456</div>
+                        <div class="stat-label">Images</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> +23 this week
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon analytics">
+                            <i class="fas fa-file-audio"></i>
+                        </div>
+                        <div class="stat-number">778</div>
+                        <div class="stat-label">Audio Files</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> +44 this week
+                        </div>
+                    </div>
+                </div>
+
+                <!-- File Browser -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-folder-open"></i>
+                            /music/content/
+                        </h3>
+                        <div style="display: flex; gap: 1rem; align-items: center;">
+                            <input type="text" class="form-control" placeholder="Search files..." style="width: 200px;">
+                            <select class="form-control" style="width: auto;">
+                                <option>All Files</option>
+                                <option>Audio Files</option>
+                                <option>Images</option>
+                                <option>Documents</option>
+                            </select>
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-th"></i>
+                            </button>
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-list"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!-- Breadcrumb -->
+                        <div style="margin-bottom: 1.5rem; padding: 0.75rem; background: rgba(255, 255, 255, 0.02); border-radius: 8px;">
+                            <nav style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-muted);">
+                                <i class="fas fa-home"></i>
+                                <span>/</span>
+                                <a href="#" style="color: var(--primary-color); text-decoration: none;">music</a>
+                                <span>/</span>
+                                <a href="#" style="color: var(--primary-color); text-decoration: none;">content</a>
+                                <span>/</span>
+                                <span>current</span>
+                            </nav>
+                        </div>
+
+                        <!-- File Grid -->
+                        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem;">
+                            <!-- Folder -->
+                            <div class="card" style="text-align: center; cursor: pointer; transition: all 0.3s ease;">
+                                <div class="card-body" style="padding: 1rem;">
+                                    <div style="font-size: 3rem; color: var(--warning-color); margin-bottom: 0.5rem;">
+                                        <i class="fas fa-folder"></i>
+                                    </div>
+                                    <div style="font-weight: 600; font-size: 0.9rem;">Artists</div>
+                                    <div style="font-size: 0.7rem; color: var(--text-muted);">24 items</div>
+                                </div>
+                            </div>
+
+                            <!-- Audio File -->
+                            <div class="card" style="text-align: center; cursor: pointer; transition: all 0.3s ease;">
+                                <div class="card-body" style="padding: 1rem;">
+                                    <div style="font-size: 3rem; color: var(--success-color); margin-bottom: 0.5rem;">
+                                        <i class="fas fa-file-audio"></i>
+                                    </div>
+                                    <div style="font-weight: 600; font-size: 0.9rem;">blinding_lights.mp3</div>
+                                    <div style="font-size: 0.7rem; color: var(--text-muted);">4.2 MB</div>
+                                </div>
+                            </div>
+
+                            <!-- Image File -->
+                            <div class="card" style="text-align: center; cursor: pointer; transition: all 0.3s ease;">
+                                <div class="card-body" style="padding: 1rem;">
+                                    <img src="../images/artists/TheWeeknd.webp" alt="Cover" style="width: 60px; height: 60px; border-radius: 8px; object-fit: cover; margin-bottom: 0.5rem;">
+                                    <div style="font-weight: 600; font-size: 0.9rem;">weeknd_cover.webp</div>
+                                    <div style="font-size: 0.7rem; color: var(--text-muted);">156 KB</div>
+                                </div>
+                            </div>
+
+                            <!-- Audio File -->
+                            <div class="card" style="text-align: center; cursor: pointer; transition: all 0.3s ease;">
+                                <div class="card-body" style="padding: 1rem;">
+                                    <div style="font-size: 3rem; color: var(--success-color); margin-bottom: 0.5rem;">
+                                        <i class="fas fa-file-audio"></i>
+                                    </div>
+                                    <div style="font-weight: 600; font-size: 0.9rem;">desi_kalakaar.mp3</div>
+                                    <div style="font-size: 0.7rem; color: var(--text-muted);">5.8 MB</div>
+                                </div>
+                            </div>
+
+                            <!-- Image File -->
+                            <div class="card" style="text-align: center; cursor: pointer; transition: all 0.3s ease;">
+                                <div class="card-body" style="padding: 1rem;">
+                                    <img src="../images/artists/drake.jpg" alt="Cover" style="width: 60px; height: 60px; border-radius: 8px; object-fit: cover; margin-bottom: 0.5rem;">
+                                    <div style="font-weight: 600; font-size: 0.9rem;">artist_photo.jpg</div>
+                                    <div style="font-size: 0.7rem; color: var(--text-muted);">234 KB</div>
+                                </div>
+                            </div>
+
+                            <!-- Upload Area -->
+                            <div class="card" style="text-align: center; cursor: pointer; border: 2px dashed var(--border-color); background: rgba(255, 74, 61, 0.05);">
+                                <div class="card-body" style="padding: 1rem;">
+                                    <div style="font-size: 3rem; color: var(--primary-color); margin-bottom: 0.5rem;">
+                                        <i class="fas fa-plus"></i>
+                                    </div>
+                                    <div style="font-weight: 600; font-size: 0.9rem;">Upload File</div>
+                                    <div style="font-size: 0.7rem; color: var(--text-muted);">Click to upload</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Uploads -->
+                <div class="card" style="margin-top: 2rem;">
+                    <div class="card-header">
+                        <h3 class="card-title">Recent Uploads</h3>
+                        <button class="btn btn-secondary">View All</button>
+                    </div>
+                    <div class="card-body" style="padding: 0;">
+                        <div class="table-container">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>File</th>
+                                        <th>Type</th>
+                                        <th>Size</th>
+                                        <th>Uploaded By</th>
+                                        <th>Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                                <div style="font-size: 1.5rem; color: var(--success-color);">
+                                                    <i class="fas fa-file-audio"></i>
+                                                </div>
+                                                <div>
+                                                    <div style="font-weight: 600;">heaven_sent.mp3</div>
+                                                    <div style="font-size: 0.8rem; color: var(--text-muted);">/music/audio/</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge badge-success">Audio</span></td>
+                                        <td>4.2 MB</td>
+                                        <td>Admin</td>
+                                        <td>2 hours ago</td>
+                                        <td>
+                                            <div style="display: flex; gap: 0.5rem;">
+                                                <button class="btn btn-secondary" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">
+                                                    <i class="fas fa-download"></i>
+                                                </button>
+                                                <button class="btn btn-primary" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn" style="padding: 0.25rem 0.5rem; font-size: 0.8rem; background: var(--danger-color); color: white;">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                                <div style="font-size: 1.5rem; color: var(--info-color);">
+                                                    <i class="fas fa-file-image"></i>
+                                                </div>
+                                                <div>
+                                                    <div style="font-weight: 600;">album_cover_new.png</div>
+                                                    <div style="font-size: 0.8rem; color: var(--text-muted);">/music/images/</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge badge-info">Image</span></td>
+                                        <td>256 KB</td>
+                                        <td>John Doe</td>
+                                        <td>5 hours ago</td>
+                                        <td>
+                                            <div style="display: flex; gap: 0.5rem;">
+                                                <button class="btn btn-secondary" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">
+                                                    <i class="fas fa-download"></i>
+                                                </button>
+                                                <button class="btn btn-primary" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn" style="padding: 0.25rem 0.5rem; font-size: 0.8rem; background: var(--danger-color); color: white;">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        console.log('Content Manager loaded');
+        
+        // File upload handling
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click handlers for file operations
+        });
+    </script>
+</body>
+</html>

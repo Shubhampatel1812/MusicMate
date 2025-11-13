@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicMate - Create Account</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(to bottom, rgb(0,0,0,.95), rgba(100,0,40));
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 74, 61, 0.1);
+            z-index: 1000;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+        
+        .navbar-brand i {
+            color: #ff4a3d;
+            font-size: 1.5rem;
+        }
+        
+        .navbar-brand span {
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #fff;
+            background: rgba(255, 74, 61, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .btn-login {
+            background: linear-gradient(45deg, #ff4a3d, #860b0d);
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 74, 61, 0.3);
+            color: white;
+        }
+        
+        .signup-container {
+            padding-top: 120px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 2rem 2rem;
+        }
+        
+        .signup-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 74, 61, 0.2);
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        /* Background Effects */
+        #blur {
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            z-index: -2;
+            backdrop-filter: blur(12vmax);
+        }
+        
+        #blob {
+            background: linear-gradient(135deg, rgba(255, 74, 61, 0.1), rgba(134, 11, 13, 0.1));
+            height: 40vmax;
+            width: 40vmax;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            translate: -50% -50%;
+            border-radius: 50%;
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+        .brand-logo {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        /* Signup Content */
+        .signup-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .signup-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px rgba(255, 74, 61, 0.3);
+        }
+        
+        .signup-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+        }
+        
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .form-group {
+            position: relative;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .form-input, .form-select {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 74, 61, 0.2);
+            border-radius: 15px;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+        
+        .form-input:focus, .form-select:focus {
+            border-color: #ff4a3d;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(255, 74, 61, 0.2);
+        }
+        
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .form-select {
+            cursor: pointer;
+        }
+        
+        .form-select option {
+            background: #1a1a1a;
+            color: #fff;
+        }
+        
+        .password-strength {
+            margin-top: 0.75rem;
+            font-size: 0.85rem;
+        }
+        
+        .strength-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .strength-bar {
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+        
+        .strength-fill {
+            height: 100%;
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+        
+        .strength-weak { background: #ff4757; width: 25%; }
+        .strength-fair { background: #ffa502; width: 50%; }
+        .strength-good { background: #2ed573; width: 75%; }
+        .strength-strong { background: #5352ed; width: 100%; }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+        
+        .checkbox-input {
+            width: 18px;
+            height: 18px;
+            accent-color: #ff4a3d;
+            margin-top: 2px;
+        }
+        
+        .checkbox-label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .checkbox-label a {
+            color: #ff4a3d;
+            text-decoration: none;
+        }
+        
+        .checkbox-label a:hover {
+            color: white;
+        }
+        
+        .btn-signup {
+            background: linear-gradient(45deg, #ff4a3d, #860b0d);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+        }
+        
+        .btn-signup:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 74, 61, 0.3);
+        }
+        
+        .divider {
+            text-align: center;
+            margin: 2rem 0;
+            position: relative;
+        }
+        
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: rgba(255, 74, 61, 0.2);
+        }
+        
+        .divider span {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 0 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+        
+        .social-signup {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn-social {
+            flex: 1;
+            padding: 0.75rem;
+            border: 2px solid rgba(255, 74, 61, 0.2);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-social:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #ff4a3d;
+            color: white;
+        }
+        
+        .login-link {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 74, 61, 0.2);
+        }
+        
+        .login-link p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .login-link a {
+            color: #ff4a3d;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .login-link a:hover {
+            color: white;
+        }
+        
+        .admin-link a:hover {
+            color: white;
+            transform: translateY(-1px);
+        }
+        
+        .error-message {
+            color: #ff4757;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            min-height: 1.2rem;
+        }
+        
+        .form-feedback {
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+        
+        .valid-feedback {
+            color: #2ed573;
+        }
+        
+        .invalid-feedback {
+            color: #ff4757;
+        }
+        
+        .form-input.is-valid {
+            border-color: #2ed573;
+        }
+        
+        .form-input.is-valid + .valid-feedback {
+            display: block;
+        }
+        
+        .form-input.is-invalid {
+            border-color: #ff4757;
+        }
+        
+        .form-input.is-invalid + .invalid-feedback,
+        .form-input.is-invalid ~ .invalid-feedback {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .signup-card {
+                padding: 2rem;
+                margin: 1rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .signup-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="../index.html" class="navbar-brand">
+            <i class="fas fa-music"></i>
+            <span>MusicMate</span>
+        </a>
+        
+        <ul class="navbar-nav">
+            <li><a href="../index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="music-player.html" class="nav-link">Player</a></li>
+            <li><a href="podcasts.html" class="nav-link">Podcasts</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        
+        <div class="navbar-actions">
+            <a href="login.html" class="btn-login">Sign In</a>
+        </div>
+    </nav>
+
+    <!-- Signup Container -->
+    <div class="signup-container">
+        <div class="signup-card">
+            <div class="signup-header">
+                <h1 class="signup-title">Join MusicMate</h1>
+                <p class="signup-subtitle">Create your account and start your musical journey</p>
+            </div>
+
+            <form class="signup-form" id="signupForm" onsubmit="event.preventDefault(); handleSignup();">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" class="form-input" id="firstName" placeholder="First Name" required>
+                        <div class="error-message" id="firstNameError"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-input" id="lastName" placeholder="Last Name" required>
+                        <div class="error-message" id="lastNameError"></div>
+                    </div>
+                </div>
+                
+                <div class="form-group full-width">
+                    <input type="email" class="form-input" id="email" placeholder="Email Address" required>
+                    <div class="error-message" id="emailError"></div>
+                </div>
+                
+                <div class="form-group full-width">
+                    <input type="tel" class="form-input" id="phone" placeholder="Phone Number (Optional)">
+                    <div class="error-message" id="phoneError"></div>
+                </div>
+                
+                <div class="form-group full-width">
+                    <input type="password" class="form-input" id="password" placeholder="Create Password" required minlength="6">
+                    <div class="error-message" id="passwordError"></div>
+                    <div class="password-strength">
+                        <div class="strength-info">
+                            <span>Password Strength</span>
+                            <span id="strengthLevel">Weak</span>
+                        </div>
+                        <div class="strength-bar">
+                            <div class="strength-fill" id="strengthFill"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group full-width">
+                    <input type="password" class="form-input" id="confirmPassword" placeholder="Confirm Password" required>
+                    <div class="error-message" id="confirmPasswordError"></div>
+                </div>
+                
+                <div class="form-group full-width">
+                    <select class="form-select" id="musicPreference" required>
+                        <option value="">Choose your favorite music genre</option>
+                        <option value="pop">Pop</option>
+                        <option value="rock">Rock</option>
+                        <option value="hip-hop">Hip Hop</option>
+                        <option value="jazz">Jazz</option>
+                        <option value="classical">Classical</option>
+                        <option value="electronic">Electronic</option>
+                        <option value="country">Country</option>
+                        <option value="r&b">R&B</option>
+                        <option value="reggae">Reggae</option>
+                        <option value="indie">Indie</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div class="error-message" id="musicPreferenceError"></div>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" class="checkbox-input" id="agreeTerms" required>
+                    <label class="checkbox-label" for="agreeTerms">
+                        I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                    </label>
+                    <div class="error-message" id="termsError"></div>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" class="checkbox-input" id="newsletter">
+                    <label class="checkbox-label" for="newsletter">
+                        Subscribe to our newsletter for music updates and exclusive content
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn-signup">
+                    <i class="fas fa-user-plus" style="margin-right: 0.5rem;"></i>
+                    Create Account
+                </button>
+            </form>
+
+            <div class="divider">
+                <span>or sign up with</span>
+            </div>
+
+            <div class="social-signup">
+                <a href="#" class="btn-social">
+                    <i class="fab fa-google"></i>
+                    Google
+                </a>
+                <a href="#" class="btn-social">
+                    <i class="fab fa-facebook-f"></i>
+                    Facebook
+                </a>
+            </div>
+
+            <div class="login-link">
+                <p>Already have an account? <a href="login.html">Sign in here</a></p>
+            </div>
+            
+            <div class="admin-link" style="text-align: center; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255, 74, 61, 0.15);">
+                <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; margin-bottom: 0.5rem;">Admin Access</p>
+                <a href="../admin/index.html" style="color: #ff4a3d; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease;">
+                    <i class="fas fa-shield-alt"></i>
+                    Admin Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+
+    
+    <script>
+        // Password strength checker
+        document.getElementById('password').addEventListener('input', function() {
+            const password = this.value;
+            const strengthFill = document.getElementById('strengthFill');
+            const strengthLevel = document.getElementById('strengthLevel');
+            
+            let strength = 0;
+            let strengthText = '';
+            
+            if (password.length >= 6) strength++;
+            if (password.match(/[a-z]/)) strength++;
+            if (password.match(/[A-Z]/)) strength++;
+            if (password.match(/[0-9]/)) strength++;
+            if (password.match(/[^a-zA-Z0-9]/)) strength++;
+            
+            strengthFill.className = 'strength-fill';
+            
+            switch(strength) {
+                case 0:
+                case 1:
+                    strengthFill.classList.add('strength-weak');
+                    strengthText = 'Weak';
+                    break;
+                case 2:
+                    strengthFill.classList.add('strength-fair');
+                    strengthText = 'Fair';
+                    break;
+                case 3:
+                case 4:
+                    strengthFill.classList.add('strength-good');
+                    strengthText = 'Good';
+                    break;
+                case 5:
+                    strengthFill.classList.add('strength-strong');
+                    strengthText = 'Strong';
+                    break;
+            }
+            
+            strengthLevel.textContent = strengthText;
+        });
+        
+        // Confirm password validation
+        document.getElementById('confirmPassword').addEventListener('input', function() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = this.value;
+            
+            if (confirmPassword && password !== confirmPassword) {
+                this.classList.add('is-invalid');
+                this.classList.remove('is-valid');
+            } else if (confirmPassword) {
+                this.classList.add('is-valid');
+                this.classList.remove('is-invalid');
+            }
+        });
+        
+        // Email validation
+        document.getElementById('email').addEventListener('input', function() {
+            const email = this.value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (email && emailRegex.test(email)) {
+                this.classList.add('is-valid');
+                this.classList.remove('is-invalid');
+            } else if (email) {
+                this.classList.add('is-invalid');
+                this.classList.remove('is-valid');
+            }
+        });
+        
+        // Form submission
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const musicPreference = document.getElementById('musicPreference').value;
+            const agreeTerms = document.getElementById('agreeTerms').checked;
+            const newsletter = document.getElementById('newsletter').checked;
+            
+            // Simple validation - only check if required fields are filled
+            if (!firstName || !lastName || !email || !password || !confirmPassword || !musicPreference || !agreeTerms) {
+                alert('Please fill in all required fields and agree to the terms.');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match. Please check and try again.');
+                return;
+            }
+            
+            // Simulate account creation
+            const message = `Welcome ${firstName}! Your MusicMate account has been created successfully.\n\n${newsletter ? 'You have been subscribed to our newsletter.' : ''} Redirecting to login page...`;
+            alert(message);
+            
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 2000);
+        });
+
+        // Social signup handlers
+        document.querySelectorAll('.btn-social').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const provider = this.textContent.trim();
+                alert(`${provider} signup will be available soon!`);
+            });
+        });
+        
+        // Optional: Add validation only when user submits or specifically requests it
+        // Removed automatic validation to prevent showing errors on page load
+    </script>
+    
+    <!-- JavaScript Files -->
+    <script src="../js/auth.js"></script>
+    
+    <!-- Background Effects -->
+    <div id="blur"></div>
+    <div id="blob"></div>
+</body>
+</html>
